@@ -8,6 +8,9 @@
     /*this is just to organize the demo checkboxes*/
     label {margin-right:20px;}
   </style>
+  <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css"/>
+  <link rel="stylesheet" type="text/css" href="codebase/dhtmlx.css"/>
+  <script src="codebase/dhtmlx.js"></script>
 </head>
 <body>
 
@@ -37,7 +40,7 @@
     </tr>
   </tfoot>-->
   <tbody>
-  <form action="save.php" method="post">
+  <form action="save.php" method="post" id="myForm">
 
       <?php 
         
@@ -48,6 +51,7 @@
           foreach ($family as $person) {
             echo "<tr><td> $person </td>";
             echo "<input type=\"hidden\" name=\"person$j\" value=\"$person\">";
+            // Edit button:
             echo "<td>Comida<br>Cena</td>";
 
         
@@ -55,14 +59,14 @@
             $DinnerCheck = fgetcsv($gestor,1000,";");
             for ($i=1; $i < 8 ; $i++) {
               $idx=$i+1;
+              $disabled="disabled";
+              $disabled="";
               echo "<td>
-              <input type='checkbox' value='check' $MealCheck[$idx]ed name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
-              <label for=\"$person-checkboxM$i\" class='css-label'>
-              </label>
+              <input type='checkbox' $disabled value='check' $MealCheck[$idx]ed name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
+              <label for=\"$person-checkboxM$i\" class='css-label'></label>
               <br>
-              <input type='checkbox' value='check' $DinnerCheck[$idx]ed name=\"$person-checkboxD$i\" id=\"$person-checkboxD$i\" class='css-checkbox' />
-              <label for=\"$person-checkboxD$i\" class='css-label'>
-              </label>
+              <input type='checkbox' $disabled value='check' $DinnerCheck[$idx]ed name=\"$person-checkboxD$i\" id=\"$person-checkboxD$i\" class='css-checkbox' />
+              <label for=\"$person-checkboxD$i\" class='css-label'></label>
               </td>";
             }
           $j++;
