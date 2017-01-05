@@ -1,8 +1,8 @@
-Carlos;Comida;checked;;;;;;checked
-Carlos;Cena;checked;;;;;;checked
-Víctor;Comida;;;checked;;;;checked
-Víctor;Cena;;;;checked;;;checked
-Papá;Comida;;;;;;;
-Papá;Cena;;;;;;;
-Mamá;Comida;checked;checked;checked;checked;checked;checked;checked
-Mamá;Cena;checked;;;;;;checked
+Carlos;M;;check;;check;;;check;
+Carlos;D;;check;;check;;;;
+Víctor;M;;check;;;check;;;
+Víctor;D;;check;;;check;;;
+Mamá;M;;;check;;;;;
+Mamá;D;;;check;;;;;
+Papá;M;;;check;check;;check;check;
+Papá;D;;;check;check;;check;check;

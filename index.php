@@ -53,14 +53,14 @@
         
             $MealCheck = fgetcsv($gestor,1000,";");
             $DinnerCheck = fgetcsv($gestor,1000,";");
-            for ($i=1; $i <=8 ; $i++) { 
-
+            for ($i=1; $i < 8 ; $i++) {
+              $idx=$i+1;
               echo "<td>
-              <input type='checkbox' value='check' $MealCheck[$i+1] name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
+              <input type='checkbox' value='check' $MealCheck[$idx]ed name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
               <label for=\"$person-checkboxM$i\" class='css-label'>
               </label>
               <br>
-              <input type='checkbox' value='check' $DinnerCheck[$i+1] name=\"$person-checkboxD$i\" id=\"$person-checkboxD$i\" class='css-checkbox' />
+              <input type='checkbox' value='check' $DinnerCheck[$idx]ed name=\"$person-checkboxD$i\" id=\"$person-checkboxD$i\" class='css-checkbox' />
               <label for=\"$person-checkboxD$i\" class='css-label'>
               </label>
               </td>";
