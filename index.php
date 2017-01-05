@@ -2,18 +2,21 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>CSS Checkbox Demo from CSSCheckbox.com</title>
+  <title>Organización Tejón</title>
   <link rel="stylesheet" href="style.css"/>
-  <style type="text/css">
-    /*this is just to organize the demo checkboxes*/
-    label {margin-right:20px;}
-  </style>
-  <link rel="stylesheet" type="text/css" href="codebase/fonts/font_roboto/roboto.css"/>
-  <link rel="stylesheet" type="text/css" href="codebase/dhtmlx.css"/>
-  <script src="codebase/dhtmlx.js"></script>
+  <link rel="stylesheet" href="main.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <meta name="description" content="">
+        <!-- 
+        Rectangle Template 
+        http://www.templatemo.com/preview/templatemo_439_rectangle
+      -->
 </head>
 <body>
 
+
+        
+<form action="save.php" method="post" id="myForm">
 <table dir="ltr" width="850px" border="2" 
       summary="purpose/structure for speech output">
   <!--<caption>
@@ -21,15 +24,15 @@
   </caption>-->
   <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col"></th>
-      <th scope="col">Lunes</th>
-      <th scope="col">Martes</th>
-      <th scope="col">Miércoles</th>
-      <th scope="col">Jueves</th>
-      <th scope="col">Viernes</th>
-      <th scope="col">Sábado</th>
-      <th scope="col">Domingo</th>      
+      <th class="title" scope="col">Name</th>
+      <th class="title" scope="col"></th>
+      <th class="title" scope="col">Lunes</th>
+      <th class="title" scope="col">Martes</th>
+      <th class="title" scope="col">Miércoles</th>
+      <th class="title" scope="col">Jueves</th>
+      <th class="title" scope="col">Viernes</th>
+      <th class="title" scope="col">Sábado</th>
+      <th class="title" scope="col">Domingo</th>      
     </tr>
   </thead>
   <!--<tfoot>
@@ -40,7 +43,6 @@
     </tr>
   </tfoot>-->
   <tbody>
-  <form action="save.php" method="post" id="myForm">
 
       <?php 
         
@@ -49,10 +51,10 @@
        
         if (($gestor = fopen("data/data.csv","r")) !== FALSE ){
           foreach ($family as $person) {
-            echo "<tr><td> $person </td>";
+            echo "<tr><td class='title'> $person </td>";
             echo "<input type=\"hidden\" name=\"person$j\" value=\"$person\">";
             // Edit button:
-            echo "<td>Comida<br>Cena</td>";
+            echo "<td class='subtype'>Comida<br>Cena</td>";
 
         
             $MealCheck = fgetcsv($gestor,1000,";");
@@ -61,7 +63,7 @@
               $idx=$i+1;
               $disabled="disabled";
               $disabled="";
-              echo "<td>
+              echo "<td class='butts'>
               <input type='checkbox' $disabled value='check' $MealCheck[$idx]ed name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
               <label for=\"$person-checkboxM$i\" class='css-label'></label>
               <br>
@@ -74,10 +76,11 @@
           }
         }
         ?>
-      <input type="submit">
     </tr>
-    </form>
   </tbody>
 </table>
+      <div class="submit"> <input type="submit" class="action-button shadow animate green" name="Avisar!" value="Avisar!"></div>
+    </form>
 </body>
+  
 </html>
