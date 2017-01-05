@@ -37,23 +37,42 @@
     </tr>
   </tfoot>-->
   <tbody>
-    <tr>
-      <td>Carlos</td>
-      <td>Comida<br>Cena</td>
+  <form action="save.php" method="post">
 
-        <?php
-          if (($gestor = fopen("data/data.csv","r")) !== FALSE ){
-            $j=0; 
+      <?php 
+        
+        $family = array_map('str_getcsv', file('data/family.csv'))[0];
+        $j=1; 
+       
+        if (($gestor = fopen("data/data.csv","r")) !== FALSE ){
+          foreach ($family as $person) {
+            echo "<tr><td> $person </td>";
+            echo "<input type=\"hidden\" name=\"person$j\" value=\"$person\">";
+            echo "<td>Comida<br>Cena</td>";
+
+        
             $MealCheck = fgetcsv($gestor,1000,";");
             $DinnerCheck = fgetcsv($gestor,1000,";");
             for ($i=2; $i < 9; $i++) { 
 
-              echo "<td><input type='checkbox' value='check' $MealCheck[$i] name=\"checkboxM$i\" id=\"checkboxM$i\" class='css-checkbox' /><label for=\"checkboxM$i\" class='css-label'></label><br><input type='checkbox' value='check' $DinnerCheck[$i] name=\"checkboxD$i\" id=\"checkboxD$i\" class='css-checkbox' /><label for=\"checkboxD$i\" class='css-label'></label></td>";
+              echo "<td>
+              <input type='checkbox' value='check' $MealCheck[$i] name=\"$person-checkboxM$i\" id=\"$person-checkboxM$i\" class='css-checkbox' />
+              <label for=\"$person-checkboxM$i\" class='css-label'>
+              </label>
+              <br>
+              <input type='checkbox' value='check' $DinnerCheck[$i] name=\"$person-checkboxD$i\" id=\"$person-checkboxD$i\" class='css-checkbox' />
+              <label for=\"$person-checkboxD$i\" class='css-label'>
+              </label>
+              </td>";
             }
+          $j++;
+          echo "</tr>";
           }
+        }
         ?>
-      
+      <input type="submit">
     </tr>
+    </form>
   </tbody>
 </table>
 </body>
